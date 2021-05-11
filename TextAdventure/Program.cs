@@ -42,7 +42,6 @@ namespace TextAdventure
 
                     if (ParseAdventure(adventure, out choices))
                     {
-
                         //Start game
                         Game();
                     }
@@ -96,7 +95,7 @@ namespace TextAdventure
 
         static bool ParseAdventure(string[] a, out List<Node> adventure)
         {
-            List<Choice> noideChoices = new List<Choice>();
+            List<Choice> nodeChoices = new List<Choice>();
             List<Node> nodes = new List<Node>();
             Node currentNode = null;
             int nodeID = -1;
@@ -122,12 +121,11 @@ namespace TextAdventure
                     {
                         //Set values
                         currentNode.text = nodeText;
-                        if (noideChoices.Count < 1)
+                        if (nodeChoices.Count < 1)
                         {
                             //Console.WriteLine("Possible error! End node? " + i);
-                            //noErrors = false;
                         }
-                        currentNode.choices = noideChoices;
+                        currentNode.choices = nodeChoices;
                         if (nodeID == -1)
                         {
                             Console.WriteLine("Error! No node ID found!");
@@ -139,7 +137,7 @@ namespace TextAdventure
 
                         nodeText = "";
                         nodeID = -1;
-                        noideChoices = new List<Choice>();
+                        nodeChoices = new List<Choice>();
                         currentNode = new Node();
                     }
 
@@ -176,20 +174,20 @@ namespace TextAdventure
                     string[] sSplit = GetFirstIntAndSplitAfter(s);
                     c.nodeID = int.Parse(sSplit[0]);
                     c.text = sSplit[1];
+
                     //Add to choices
-                    noideChoices.Add(c);
+                    nodeChoices.Add(c);
                     if (c.nodeID == -1)
                     {
                         Console.WriteLine("Error, bad data @ row " + i + "! No choice node ID.");
                         noErrors = false;
                     }
-
                     continue;
                 }
             }
 
             // Add last node to list
-            currentNode.choices = noideChoices;
+            currentNode.choices = nodeChoices;
             currentNode.ID = nodeID;
             currentNode.text = nodeText;
 
