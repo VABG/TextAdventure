@@ -28,7 +28,7 @@ namespace TextAdventure
             //Menu
             while (true)
             {
-                // Check if file was dragged onto executable
+                // Try to load a fil
                 Console.WriteLine("Please input an adventure file name:");
                 string s = Console.ReadLine();
                 if (s == "quit" || s == "exit") return;
@@ -250,7 +250,6 @@ namespace TextAdventure
             else
             {
                 string[] strings = new string[2];
-                //TODO: Check if +1 is needed to get accurate length.
                 strings[0] = s[start..end];
                 strings[1] = s[end..].Trim();
 
