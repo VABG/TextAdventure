@@ -28,7 +28,7 @@ namespace TextAdventure
             //Menu
             while (true)
             {
-                // Try to load a fil
+                // Try to load a file
                 Console.WriteLine("Please input an adventure file name:");
                 string s = Console.ReadLine();
                 if (s == "quit" || s == "exit") return;
@@ -123,7 +123,7 @@ namespace TextAdventure
                         currentNode.text = nodeText;
                         if (nodeChoices.Count < 1)
                         {
-                            //Console.WriteLine("Possible error! End node? " + i);
+                            //TODO: Make sure this is an end node.
                         }
                         currentNode.choices = nodeChoices;
                         if (nodeID == -1)
